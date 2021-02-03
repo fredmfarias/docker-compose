@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  ravendb:
+    container_name: ravendb
+    image: ravendb/ravendb
+    ports:
+      - "8080:8080"
+    volumes:
+      - /opt/RavenDB/Server/config
+      - /opt/RavenDB/Server/RavenData
+    environment: 
+      - RAVEN_LogToConsole=true
+      - RAVEN_DataDir=RavenData
+      - RAVEN_Setup_Mode=None
+      - RAVEN_Security_UnsecuredAccessAllowed='PrivateNetwork'
+      - RAVEN_License_Eula_Accepted=true
+      - PublicServerURL='http://ravendb:8080'
+      - Hostname='ravendb'
